@@ -13,7 +13,7 @@
 #比较好理解，当自动填充时会激活:-internal-autofill-selected伪类，然后就变成了淡紫色。
 #如果我们设置样式覆盖
 #input:-internal-autofill-selected{
-#    background: red!important;
+    background: red!important;
 #}
 #复制代码虽然样式覆盖了，然而并没有什么用，仍然是默认的淡紫色（要是起作用的话就不会专门去研究这个了），原因不明...
 #现有的解决方式
@@ -21,7 +21,7 @@
 #1. 使用内阴影进行覆盖
 #既然背景改变不了，那么就找个东西覆盖呗
 #input{
-#    box-shadow: 0 0 0px 1000px white inset;
+    box-shadow: 0 0 0px 1000px white inset;
 #}
 
 #大部分情况使用这种方式即可解决问题
@@ -42,14 +42,14 @@
 #既然背景改变不了，那么就把它裁掉呗。
 #背景颜色默认是渲染到padding-box的，我们可以设置background-clip: content-box只渲染到content-box，这样背景就看不到了（当然还需指定一下高度为0。）~
 #input{
-#  height: 0;
-#  padding: 1.2em .5em;
-#  background-clip: content-box;
+  height: 0;
+  padding: 1.2em .5em;
+  background-clip: content-box;
 #}
 
 #可以看到，自动填充时的背景已经消失了，不过还有一个小问题，填充的文字颜色也是无法直接修改的（默认为rgb(0,0,0)），原因相同，这里我们可以借助一下::first-line伪类
 #input::first-line{
-#  color: #fff
+  color: #fff
 #}
 
 #应该算比较完美了~
@@ -59,24 +59,24 @@
 #设置animation-fill-mode:forwards后，动画会一直停留在最后一帧，这个已经和默认的样式不是一个维度了，不管设置什么样式，都会保留最后一帧状态，比如
 #<style>
 #div{
-#    animation:resetBg .1s forwards;
-#}
+    animation:resetBg .1s forwards;
+}
 #@keyframes resetBg {
 #  to {
-#    background: blue;
-#  }
-#}
+    background: blue;
+  }
+}
 #</style>
 #<div style="background:red!important">div</div>
 #复制代码
 #可以看到背景很轻易的就被改成了蓝色。
 #利用这个特性，上面的问题就很容易了，只需设置一个动画即可
 #input{
-#  animation: resetBg .1s forwards;
+  animation: resetBg .1s forwards;
 #}
 #@keyframes resetBg {
-#  to {
-#    color: #fff;
-#    background: transparent;
-#  }
+  to {
+    color: #fff;
+    background: transparent;
+  }
 #}
