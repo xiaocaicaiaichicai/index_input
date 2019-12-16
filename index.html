@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>修改input自动填充底色</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            height: 100%;
+        }
+        
+        body {
+            background: #666;
+        }
+        
+        form {
+            padding: 20px;
+        }
+        
+        .ui-input,
+        .ui-button {
+            outline: 0;
+            border: 1px solid #fff;
+            line-height: 2.4em;
+            padding: 0 .5em;
+            border-radius: 3px;
+            background: transparent;
+            color: #fff;
+        }
+        
+        .ui-input {
+            height: 0;
+            padding: 1.2em .5em;
+            caret-color: #fff;
+            background-clip: content-box;
+        }
+        
+        .ui-input::first-line {
+            color: #fff
+        }
+    </style>
+</head>
+
+<body>
+    <form id="form">
+        <input class="ui-input" name="user">
+        <button class="ui-button" type="submit">submit</button>
+    </form>
+    <script>
+        var form = document.getElementById('form');
+        form.onsubmit = function(ev) {
+            ev.preventDefault()
+        }
+    </script>
+</body>
+
+</html>
