@@ -57,9 +57,9 @@ input::first-line{
 如果demo里面没有自动填充选项，可以先输入一些字符，然后submit，手动创建一些填充项，下同  
 方式二：利用animation-fill-mode:forwards  
 设置animation-fill-mode:forwards后，动画会一直停留在最后一帧，这个已经和默认的样式不是一个维度了，不管设置什么样式，都会保留最后一帧状态，比如  
-<style>  
-div{  
-    animation:resetBg .1s forwards;  
+<style>    
+div{    
+    animation:resetBg .1s forwards;    
 }  
 @keyframes resetBg {  
   to {  
